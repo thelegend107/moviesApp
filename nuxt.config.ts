@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     imports: {
-        dirs: ["stores", "models"],
+        dirs: ["stores", "types", "components/**"],
         global: true
     },
     css: ["~/assets/main.scss"],

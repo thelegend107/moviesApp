@@ -16,9 +16,9 @@ console.log(prop.error);
         <p class="text-2xl sm:text-3xl font-light leading-tight mb-5">
             {{ error?.message }}
         </p>
-        <NuxtLink class="btn btn-primary" to="/" @click="$router.push('/')">
+        <button class="btn dark:btn-primary btn-secondary" to="/" @click="$router.push('/')">
             <Icon name="ri:home-fill" size="24" />
             <p>Go back home</p>
-        </NuxtLink>
+        </button>
     </div>
 </template>

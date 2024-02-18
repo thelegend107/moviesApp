@@ -4,6 +4,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @layer base {
+    * {
+        @apply transition-all ease-in-out duration-500;
+    }
+
     h1 {
         @apply text-2xl;
     }
@@ -17,55 +21,61 @@
     }
 
     a {
-        @apply transition-all ease-in-out duration-300;
-
         &:hover {
-            @apply text-primaryDark dark:text-primary;
+            @apply text-secondaryDark dark:text-primaryDark;
+
+            .def-icon {
+                @apply text-secondaryDark dark:text-primaryDark
+            }
         }
     }
 
     header {
-        @apply shadow-sm shadow-primaryDark dark:shadow-primary
+        @apply bg-white dark:bg-neutral-950;
+        @apply shadow-lg shadow-secondaryDark dark:shadow-primaryDark;
     }
 
     // Dark & Light Mode
     body {
         @apply font-poppins tracking-wide;
-        @apply bg-white text-[#111];
-        @apply transition-all ease-in-out duration-500;
+        @apply bg-[#d8dfdc] text-[#111];
 
         select,
         input {
-            @apply bg-white text-[#111];
+            @apply bg-[#d8dfdc] text-[#111];
         }
     }
 
     .dark body {
-        @apply bg-[#111] text-[#ebf4f1];
+        @apply bg-[#111] text-[#d8dfdc];
 
         select,
         input {
-            @apply bg-[#111] text-[#ebf4f1];
+            @apply bg-[#111] text-[#d8dfdc];
         }
     }
 }
 
 @layer components {
     .btn {
+        @apply text-white dark:text-black;
         @apply flex items-center justify-center space-x-2;
         @apply rounded-md py-2 px-4;
-        @apply hover:text-white dark:hover:text-black shadow-md shadow-black;
-        @apply transition-all ease-in-out duration-500;
+        @apply shadow-md shadow-black;
     }
 
     .def-icon {
-        @apply text-primaryDark dark:text-primary transition-all ease-in-out duration-300;
+        @apply text-secondary dark:text-primary transition-all ease-in-out duration-300;
     }
 }
 
 // Active Nuxt Page
 .router-link-exact-active {
-    @apply text-primaryDark dark:text-primary;
+    @apply text-secondaryDark dark:text-primaryDark;
+
+    .def-icon {
+        @apply text-secondaryDark dark:text-primaryDark
+    }
 }
 
 // Default Nuxt Page Transitions

@@ -27,10 +27,10 @@ module.exports = {
                 poppins: ["Poppins", "sans-serif"],
             },
             colors: {
-                'primary': '#FF4000',
-                'primaryDark': '#FF0000',
-                'secondary': '#000080',
-                'secondaryDark': '#000042'
+                'primary': '#FB8B24',
+                'primaryDark': '#FF4000',
+                'secondary': '#9A031E',
+                'secondaryDark': '#5F0F40'
             },
             boxShadow: {
                 'around': '0px 0px 5px 1px rgb(0, 0, 0, 0.5)'
@@ -40,6 +40,7 @@ module.exports = {
     darkMode: 'class',
     // My custom classes
     plugins: [
+        require('tailwind-scrollbar'),
         plugin(function ({ addComponents, theme }) {
             addComponents({
                 '.btn': {

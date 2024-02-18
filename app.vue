@@ -13,7 +13,7 @@ useMeta(title, description, undefined, true);
             <NuxtPage class="h-full w-full" />
         </template>
         <template #footer>
-            Moe Ayoub
+            <div>Moe Ayoub</div>
         </template>
     </NuxtLayout>
 </template>
