@@ -1,5 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    nitro: {
+        imports: {
+            dirs: ['server', 'server/middleware/**', 'server/types/**'],
+        }
+    },
     imports: {
         dirs: ["stores", "types", "components/**"],
         global: true
