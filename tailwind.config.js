@@ -30,7 +30,9 @@ module.exports = {
                 'primary': '#FB8B24',
                 'primaryDark': '#FF4000',
                 'secondary': '#9A031E',
-                'secondaryDark': '#5F0F40'
+                'secondaryDark': '#5F0F40',
+                'light': '#d8dfdc',
+                'dark': '#111'
             },
             boxShadow: {
                 'around': '0px 0px 5px 1px rgb(0, 0, 0, 0.5)'

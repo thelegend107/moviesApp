@@ -1,12 +1,12 @@
 <template>
-    <div class="flex flex-col h-screen justify-between">
-        <header class="flex flex-col w-full sticky inset-0">
+    <div class="flex flex-col h-screen w-full duration-0">
+        <header>
             <slot name="header" />
         </header>
         <main>
             <slot name="main" />
         </main>
-        <footer class="mt-auto p-4 flex justify-end">
+        <footer class="mt-auto">
             <slot name="footer" />
         </footer>
     </div>

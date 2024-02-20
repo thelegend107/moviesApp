@@ -1,12 +1,11 @@
 <script setup lang="ts">
-const title: string = 'INDEX'
-const description: string = 'TEST'
+const headline: string = "Embark on a Cinematic Journey"
+const subhead: string = "Start Exploring Now"
 
-useMeta(title, description);
 </script>
-
 <template>
     <div>
-        HOME
+        <HeroSection :headline="headline" :subhead="subhead" />
+        <Section v-for="si in queryList.trending" :key="si.path" :title="si.title" :query-item="si" />
     </div>
 </template>

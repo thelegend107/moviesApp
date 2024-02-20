@@ -23,35 +23,39 @@
     a {
         &:hover {
             @apply text-secondaryDark dark:text-primaryDark;
-
-            .def-icon {
-                @apply text-secondaryDark dark:text-primaryDark
-            }
         }
     }
 
+    select {
+        @apply rounded-md px-2 py-1 border-2 border-secondary dark:border-primary;
+    }
+
     header {
-        @apply bg-white dark:bg-neutral-950;
+        @apply bg-white dark:bg-dark shadow-around shadow-neutral-300 dark:shadow-neutral-950;
         @apply shadow-lg shadow-secondaryDark dark:shadow-primaryDark;
+    }
+
+    footer {
+        @apply bg-white dark:bg-dark shadow-around shadow-neutral-300 dark:shadow-neutral-950;
     }
 
     // Dark & Light Mode
     body {
         @apply font-poppins tracking-wide;
-        @apply bg-[#d8dfdc] text-[#111];
+        @apply bg-light text-dark;
 
         select,
         input {
-            @apply bg-[#d8dfdc] text-[#111];
+            @apply bg-light text-dark;
         }
     }
 
     .dark body {
-        @apply bg-[#111] text-[#d8dfdc];
+        @apply bg-dark text-light;
 
         select,
         input {
-            @apply bg-[#111] text-[#d8dfdc];
+            @apply bg-dark text-light;
         }
     }
 }
@@ -63,18 +67,28 @@
         @apply rounded-md py-2 px-4;
         @apply shadow-md shadow-black;
     }
+}
 
-    .def-icon {
-        @apply text-secondary dark:text-primary transition-all ease-in-out duration-300;
+header {
+    .icon {
+        @apply text-secondary dark:text-primary;
+    }
+
+    a {
+        &:hover {
+            .icon {
+                @apply text-inherit
+            }
+        }
     }
 }
 
 // Active Nuxt Page
-.router-link-exact-active {
+.router-link-active {
     @apply text-secondaryDark dark:text-primaryDark;
 
-    .def-icon {
-        @apply text-secondaryDark dark:text-primaryDark
+    .icon {
+        @apply text-secondaryDark dark:text-primaryDark;
     }
 }
 
@@ -84,13 +98,13 @@
     transition: all 0.4s;
 }
 
-// Default Vue Transitions
 .page-enter-from,
 .page-leave-to {
     opacity: 0;
     filter: blur(1rem);
 }
 
+// Default Vue Transitions
 .v-enter-active,
 .v-leave-active {
     transition: opacity 0.5s ease;
@@ -109,4 +123,15 @@
 .fade-enter-from,
 .fade-leave-to {
     opacity: 0;
+}
+
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
 }

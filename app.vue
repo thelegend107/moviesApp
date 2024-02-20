@@ -3,8 +3,10 @@ const title: string = "Moe Ayoub - MoviesApp";
 const description: string = "This is a collection of movies and trailers. Built by Moe Ayoub with Nuxt";
 
 useMeta(title, description, undefined, true);
+const mode = useColorMode();
 </script>
 <template>
+    <NuxtLoadingIndicator :color="mode.value == 'dark' ? '#FB8B24' : '#9A031E'" />
     <NuxtLayout>
         <template #header>
             <MainHeader />
@@ -13,7 +15,7 @@ useMeta(title, description, undefined, true);
             <NuxtPage class="h-full w-full" />
         </template>
         <template #footer>
-            <div>Moe Ayoub</div>
+            <MainFooter />
         </template>
     </NuxtLayout>
 </template>
