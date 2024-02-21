@@ -1,7 +1,7 @@
 export interface PageResult<T> {
     dates?: {
-        maximum: Date,
-        minimum: Date,
+        maximum: string,
+        minimum: string,
     };
     page: number
     results: T[]

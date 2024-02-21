@@ -9,9 +9,11 @@ export class TmdbAPI {
                 Authorization: 'bearer ' + config.tmdbAccessToken,
                 Accept: 'application/json',
             },
+            retry: 3,
+            retryDelay: 500,
             params: {
                 page: 1,
-                regions: 'US',
+                region: 'US',
                 language: 'en-US'
             }
         })

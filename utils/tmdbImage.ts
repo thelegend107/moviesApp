@@ -30,3 +30,5 @@ export enum TmdbProfileSizes {
     md = "w185",
     og = "original"
 }
+
+export const noImage: string = '/noImage.png'
