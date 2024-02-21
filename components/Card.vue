@@ -1,22 +1,25 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 export interface Card {
-    imagePath: string,
-    name: string,
-    type: 'media' | 'person'
+    imagePath?: string;
+    name: string;
+    date?: string;
+    type: "media" | "person";
 }
 
-withDefaults(defineProps<Card>(), {
+const prop = withDefaults(defineProps<Card>(), {
     type: 'media'
 });
 </script>
 <template>
-    <div class="flex flex-col bg-white dark:bg-neutral-900 rounded-md shadow-md shadow-neutral-400 dark:shadow-black">
+    <div class="flex flex-col bg-white dark:bg-dark rounded-md shadow-md shadow-neutral-400 dark:shadow-black">
         <div class="w-48 border-b-4 border-b-secondary dark:border-b-primary">
-            <NuxtImg v-if="type == 'media'" class="rounded-t-md h-72 w-full" :src="tmdbImage(imagePath, TmdbPosterSizes.md)" />
-            <NuxtImg v-else class="rounded-t-md h-72 w-full" :src="tmdbImage(imagePath, TmdbProfileSizes.md)" />
+            <CardImg class="rounded-t-md h-72 w-full" :prop="prop" />
         </div>
-        <div class="flex h-full items-center justify-center p-1">
+        <div class="flex flex-col h-full items-center justify-center p-1 gap-1">
             <p>{{ name }}</p>
+            <p v-if="date">
+                {{ new Date(date).toLocaleDateString() }}
+            </p>
         </div>
     </div>
 </template>
