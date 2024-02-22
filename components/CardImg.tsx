@@ -1,6 +1,10 @@
 import { NuxtImg } from "#components";
 import type { JSX } from "vue/jsx-runtime";
 
+interface CardImg {
+  prop: Card;
+}
+
 export default function CardImg(c: CardImg): JSX.Element {
   let imgUrl: string;
 
@@ -11,8 +15,4 @@ export default function CardImg(c: CardImg): JSX.Element {
   else imgUrl = noImage;
 
   return <NuxtImg src={imgUrl} placeholder />;
-}
-
-interface CardImg {
-  prop: Card;
 }

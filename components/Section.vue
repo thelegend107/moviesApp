@@ -1,12 +1,13 @@
 <script lang="tsx" setup>
+const nuxtApp = useNuxtApp()
+const route = useRoute()
+
 interface Section {
     title: string,
     queryItem: QueryItem,
 }
 
 const prop = defineProps<Section>()
-
-const route = useRoute()
 const interval = ref()
 const apiPath = ref()
 const snapX = ref(true)
@@ -34,7 +35,20 @@ const { data, execute, pending, error } = await useAsyncData<PageResult<Media & 
             if (prop.queryItem.path.includes('trending/movie'))
                 response.results = response.results.filter(x => x.release_date && new Date(x.release_date) <= new Date(Date.now()))
 
+            response.fetchDate = new Date();
+
             return response;
+        },
+        getCachedData(key) {
+            const data = nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+            if (!data)
+                return null
+
+            const expirationDate = new Date(data.fetchDate.getTime() + 300000)
+            if (expirationDate.getTime() < Date.now())
+                return null
+
+            return data;
         },
         watch: [apiPath],
         dedupe: 'defer'
@@ -71,9 +85,9 @@ watch(interval, async (newVal, oldVal) => {
             </select>
             <icon v-if="pending" class="text-secondary dark:text-primary" name="svg-spinners:180-ring-with-bg" />
         </div>
-        <div class="flex gap-3 overflow-hidden hover:overflow-x-auto scroll-p-4 scrollbar scrollbar-track-transparent dark:scrollbar-track-transparent scrollbar-thumb-secondary dark:scrollbar-thumb-primary" :class="{ 'snap-x': snapX }">
+        <div class="flex gap-3 overflow-hidden hover:overflow-x-auto xl:snap-none scroll-p-4 scrollbar scrollbar-track-transparent dark:scrollbar-track-transparent scrollbar-thumb-secondary dark:scrollbar-thumb-primary" :class="{ 'snap-x': snapX }">
             <transition-group name="list" mode="out-in">
-                <section-card v-for="r in data?.results" :key="r.id" :info="r" :path="queryItem.path" class="hover:scale-[1.02] hover:cursor-pointer duration-200 mb-5 snap-start" />
+                <section-card v-for="r in data?.results" :key="r.id" :info="r" :path="queryItem.path" class="hover:scale-[1.02] hover:cursor-pointer duration-200 mb-5 snap-start snap-always" />
             </transition-group>
         </div>
     </div>

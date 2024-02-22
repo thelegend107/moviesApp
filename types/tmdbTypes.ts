@@ -7,6 +7,7 @@ export interface PageResult<T> {
     results: T[]
     total_pages: number
     total_results: number
+    fetchDate: Date
 }
 
 export interface Media {

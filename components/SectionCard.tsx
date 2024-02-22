@@ -1,6 +1,11 @@
 import { Card } from "#components";
 import type { JSX } from "vue/jsx-runtime";
 
+interface SectionCard {
+  info: Media & Person;
+  path: string;
+}
+
 export default function sectionCard(c: SectionCard): JSX.Element {
   let card: JSX.Element;
   if (c.path.includes("person"))
@@ -17,9 +22,4 @@ export default function sectionCard(c: SectionCard): JSX.Element {
     );
 
   return card;
-}
-
-interface SectionCard {
-  info: Media & Person;
-  path: string;
 }
