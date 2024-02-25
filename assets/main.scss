@@ -27,7 +27,7 @@
     }
 
     select {
-        @apply rounded-md px-2 py-1 border-2 border-secondary dark:border-primary;
+        @apply rounded-md px-2 py-1 border border-secondary dark:border-primary;
     }
 
     header {

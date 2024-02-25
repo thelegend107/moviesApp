@@ -1,17 +1,17 @@
-export function tmdbImage(imgPath: string, width: TmdbBackdropSizes | TmdbPosterSizes | TmdbProfileSizes, blurred: boolean = false): string {
+export function tmdbImage(imgPath: string = '', width: TmdbBackdropSizes | TmdbPosterSizes | TmdbProfileSizes, blurred: boolean = false): string {
     const config = useRuntimeConfig();
 
     let url = config.public.tmdbImgBase + width;
     if (blurred)
         url += '_filter(blur)';
 
-    return url + '/' + imgPath;
+    return url + imgPath;
 }
 
 export enum TmdbBackdropSizes {
     sm = 'w300',
     md = 'w780',
-    lg = 'w1270',
+    lg = 'w1280',
     og = 'original'
 }
 
