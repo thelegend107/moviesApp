@@ -48,10 +48,7 @@ export interface Media {
     videos?: {
         results: Video[]
     }
-    credits?: {
-        cast: Person[]
-        crew: Person[]
-    }
+    credits?: Credits
     images?: {
         backdrops: Image[]
         posters: Image[]
@@ -138,13 +135,20 @@ export interface Person {
     homepage?: string
     biography?: string
     external_ids?: ExternalIds
-    combined_credits?: {
-        cast?: Media[]
-        crew?: Media[]
-    }
+    combined_credits?: CombinedCredits
     images?: {
         profiles: Image[]
     }
+}
+
+export interface Credits {
+    cast: Person[]
+    crew: Person[]
+}
+
+export interface CombinedCredits {
+    cast?: Media[]
+    crew?: Media[]
 }
 
 export interface Genre {
