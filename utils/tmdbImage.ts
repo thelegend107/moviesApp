@@ -1,11 +1,16 @@
 export function tmdbImage(imgPath: string = '', width: TmdbBackdropSizes | TmdbPosterSizes | TmdbProfileSizes, blurred: boolean = false): string {
-    const config = useRuntimeConfig();
+    if (imgPath) {
+        const config = useRuntimeConfig();
 
-    let url = config.public.tmdbImgBase + width;
-    if (blurred)
-        url += '_filter(blur)';
+        let url = config.public.tmdbImgBase + width;
+        if (blurred)
+            url += '_filter(blur)';
 
-    return url + imgPath;
+        return url + imgPath;
+    }
+    else {
+        return noImage;
+    }
 }
 
 export enum TmdbBackdropSizes {

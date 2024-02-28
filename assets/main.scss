@@ -8,6 +8,11 @@
         @apply transition-all ease-in-out duration-500;
     }
 
+    iframe:focus-visible {
+        outline: none;
+        border: none;
+    }
+
     h1 {
         @apply text-2xl;
     }
@@ -42,20 +47,20 @@
     // Dark & Light Mode
     body {
         @apply font-poppins tracking-wide;
-        @apply bg-light text-dark;
+        @apply bg-light text-neutral-950;
 
         select,
         input {
-            @apply bg-light text-dark;
+            @apply bg-light text-neutral-950;
         }
     }
 
     .dark body {
-        @apply bg-dark text-light;
+        @apply bg-neutral-950 text-light;
 
         select,
         input {
-            @apply bg-dark text-light;
+            @apply bg-neutral-950 text-light;
         }
     }
 }

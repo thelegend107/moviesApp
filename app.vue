@@ -6,7 +6,7 @@ useMeta(title, description, undefined, true);
 const mode = useColorMode();
 </script>
 <template>
-    <NuxtLoadingIndicator :color="mode.value == 'dark' ? '#FB8B24' : '#9A031E'" />
+    <NuxtLoadingIndicator :color="mode.value == 'dark' ? '#FF4000' : '#5F0F40'" />
     <NuxtLayout>
         <template #header>
             <MainHeader />

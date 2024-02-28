@@ -3,7 +3,6 @@ const nuxtApp = useNuxtApp()
 const route = useRoute()
 
 interface List {
-    title: string,
     queryItem: QueryItem,
 }
 
@@ -17,7 +16,7 @@ if (prop.queryItem.interval) {
     apiPath.value = prop.queryItem.path + prop.queryItem.interval
 }
 
-const { data, execute, pending, error } = await useAsyncData<PageResult<Media & Person>>(
+const { data, pending } = await useAsyncData<PageResult<Media & Person>>(
     route.path + prop.queryItem.path,
     () => $fetch(apiPath.value ? apiPath.value : prop.queryItem.path),
     {
@@ -70,7 +69,7 @@ watch(interval, async (newVal, oldVal) => {
 })
 </script>
 <template>
-    <Section :title="title">
+    <Section v-if="data && data.results.length > 0" :title="queryItem.title">
         <template #trending>
             <select v-if="prop.queryItem.interval" v-model="interval" class="bg-white dark:bg-dark" :disabled="pending">
                 <option value="day">
