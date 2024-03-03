@@ -9,7 +9,7 @@ defineProps<{
             <h1 class="font-semibold">
                 {{ title }}
             </h1>
-            <slot name="trending" />
+            <slot name="action" />
         </div>
         <slot name="cards" />
     </div>

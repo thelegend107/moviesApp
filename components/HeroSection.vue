@@ -9,8 +9,9 @@ withDefaults(defineProps<HeroSection>(), {
     subhead: "Start Exploring Now"
 })
 </script>
+
 <template>
-    <div class="sm:h-64 p-6 w-full flex flex-col items-center justify-center bg-gradient-to-b from-primary to-secondary shadow-inner shadow-black">
+    <div class="sm:h-64 p-6 w-full flex flex-col items-center justify-center bg-gradient-to-b from-primary to-secondaryDark shadow-inner shadow-black">
         <h1 class="text-2xl font-light sm:text-6xl sm:font-extralight text-black mb-4">
             {{ headline }}
         </h1>

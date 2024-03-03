@@ -11,7 +11,7 @@ export default function CardImg(c: CardImg): JSX.Element {
     if (c.prop.imagePath && (c.prop.type == 'movie' || c.prop.type == 'tv'))
         imgUrl = tmdbImage(c.prop.imagePath, TmdbPosterSizes.md);
     else if (c.prop.imagePath && c.prop.type == "person")
-        imgUrl = tmdbImage(c.prop.imagePath, TmdbProfileSizes.md);
+        imgUrl = tmdbImage(c.prop.imagePath, c.prop.personPhotos ? TmdbProfileSizes.og : TmdbPosterSizes.md);
     else imgUrl = noImage;
 
     return <NuxtImg src={imgUrl} placeholder />;

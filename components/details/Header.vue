@@ -7,8 +7,6 @@ const prop = defineProps<{
     firstAirDate?: string
     lastAirDate?: string
 }>()
-
-console.log(prop.releaseDates)
 </script>
 
 <template>
@@ -16,7 +14,7 @@ console.log(prop.releaseDates)
         <p class="text-4xl sm:text-5xl text-secondary dark:text-primary">
             {{ titleName }}
         </p>
-        <div v-if="releaseDates && releaseDates?.length > 0 || runtime" class="flex gap-1 font-light items-center *:after:content-['_•_'] last:*:after:content-['']">
+        <div v-if="(releaseDates && releaseDates?.length > 0) || runtime" class="flex gap-1 font-light items-center *:after:content-['_•_'] last:*:after:content-['']">
             <div v-if="releaseDates && releaseDates?.length > 0" class="flex gap-1">
                 <p class="border border-dark dark:border-light rounded-sm px-1">
                     {{ releaseDates[0].release_dates[0].certification ? releaseDates[0].release_dates[0].certification : 'NR' }}
@@ -33,13 +31,15 @@ console.log(prop.releaseDates)
                 {{ runtime ? `${Math.floor(runtime / 60)}h ${runtime % 60}m` : null }}
             </p>
         </div>
-        <div v-else class="flex gap-1 font-light items-center *:after:content-['_•_'] last:*:after:content-['']">
+        <div v-else-if="contentRatings || firstAirDate" class="flex gap-1 font-light items-center *:after:content-['_•_'] last:*:after:content-['']">
             <div v-if="contentRatings" class="flex gap-1">
                 <p class="border border-dark dark:border-light rounded-sm px-1">
                     {{ contentRatings.length > 0 ? contentRatings[0].rating : 'NR' }}
                 </p>
             </div>
-            <p>TV Series</p>
+            <p v-if="firstAirDate">
+                TV Series
+            </p>
             <p v-if="firstAirDate && new Date(firstAirDate).getTime() < Date.now()">
                 {{
                     (new Date(firstAirDate).getFullYear()).toString() +

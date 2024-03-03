@@ -8,6 +8,10 @@
         @apply transition-all ease-in-out duration-500;
     }
 
+    :root:has(.no-scroll) {
+        overflow: hidden;
+    }
+
     iframe:focus-visible {
         outline: none;
         border: none;
@@ -37,7 +41,7 @@
 
     header {
         @apply bg-white dark:bg-dark shadow-around shadow-neutral-300 dark:shadow-neutral-950;
-        @apply shadow-lg shadow-secondaryDark dark:shadow-primaryDark;
+        //@apply shadow-lg shadow-secondaryDark dark:shadow-primaryDark;
     }
 
     footer {
