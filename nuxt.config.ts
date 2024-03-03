@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     nitro: {
-        preset: "azure-functions",
+        preset: "azure",
         imports: {
             dirs: ['server', 'server/middleware/**', 'server/types/**'],
         }
