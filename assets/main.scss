@@ -8,6 +8,15 @@
         @apply transition-all ease-in-out duration-500;
     }
 
+    :root:has(.no-scroll) {
+        overflow: hidden;
+    }
+
+    iframe:focus-visible {
+        outline: none;
+        border: none;
+    }
+
     h1 {
         @apply text-2xl;
     }
@@ -27,12 +36,12 @@
     }
 
     select {
-        @apply rounded-md px-2 py-1 border-2 border-secondary dark:border-primary;
+        @apply rounded-md px-2 py-1 border border-secondary dark:border-primary;
     }
 
     header {
         @apply bg-white dark:bg-dark shadow-around shadow-neutral-300 dark:shadow-neutral-950;
-        @apply shadow-lg shadow-secondaryDark dark:shadow-primaryDark;
+        //@apply shadow-lg shadow-secondaryDark dark:shadow-primaryDark;
     }
 
     footer {
@@ -42,20 +51,20 @@
     // Dark & Light Mode
     body {
         @apply font-poppins tracking-wide;
-        @apply bg-light text-dark;
+        @apply bg-light text-neutral-950;
 
         select,
         input {
-            @apply bg-light text-dark;
+            @apply bg-light text-neutral-950;
         }
     }
 
     .dark body {
-        @apply bg-dark text-light;
+        @apply bg-neutral-950 text-light;
 
         select,
         input {
-            @apply bg-dark text-light;
+            @apply bg-neutral-950 text-light;
         }
     }
 }

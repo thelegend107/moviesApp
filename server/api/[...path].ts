@@ -1,6 +1,7 @@
 export default defineEventHandler(async (event) => {
-    let tmdbPath: string = '';
-    const tmdb = new TmdbAPI()
+    let tmdbPath: string = ''
+    const query = getQuery(event)
+    const tmdb = new TmdbAPI((query.credits === 'true'), (query.videos === 'true'), (query.images === 'true'), (query.aggregate_credits === 'true'))
 
     if (event.context.params?.path) tmdbPath = event.context.params.path
     else throw createError({
@@ -9,7 +10,7 @@ export default defineEventHandler(async (event) => {
     })
 
     try {
-        return await tmdb.api<PageResult<Media & Person>>(tmdbPath, {
+        return await tmdb.api(tmdbPath, {
             method: 'GET',
         })
     }

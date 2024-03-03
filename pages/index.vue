@@ -6,6 +6,6 @@ const subhead: string = "Start Exploring Now"
 <template>
     <div>
         <HeroSection :headline="headline" :subhead="subhead" />
-        <Section v-for="si in queryList.trending" :key="si.path" :title="si.title" :query-item="si" />
+        <MainList v-for="si in queryList.trending" :key="si.path" :query-item="si" />
     </div>
 </template>

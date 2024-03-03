@@ -5,15 +5,18 @@ const description: string = "This is a collection of movies and trailers. Built 
 useMeta(title, description, undefined, true);
 const mode = useColorMode();
 </script>
+
 <template>
-    <NuxtLoadingIndicator :color="mode.value == 'dark' ? '#FB8B24' : '#9A031E'" />
+    <NuxtLoadingIndicator :color="mode.value == 'dark' ? '#FF4000' : '#8B1D37'" />
     <NuxtLayout>
         <template #header>
             <MainHeader />
         </template>
+
         <template #main>
             <NuxtPage class="h-full w-full" />
         </template>
+
         <template #footer>
             <MainFooter />
         </template>
