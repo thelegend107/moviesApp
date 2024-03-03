@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
         }
     })
 
-    return tmdb
+    return config.public.tmdbBase
 })
 
 // export default defineEventHandler(async (event) => {
