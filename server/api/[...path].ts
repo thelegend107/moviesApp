@@ -1,3 +1,5 @@
+import axios from "axios"
+
 export default defineEventHandler(async (event) => {
     let tmdbPath: string = ''
     const query = getQuery(event)
@@ -12,10 +14,9 @@ export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig();
     const appendToResponse = 'combined_credits,content_ratings,external_ids,release_dates'
 
-    const { data, error } = await useFetch(config.public.tmdbBase + tmdbPath, {
+    const { data } = await axios.get(config.public.tmdbBase + tmdbPath, {
         headers: {
             Authorization: 'bearer ' + config.tmdbAccessToken,
-            Accept: 'application/json',
         },
         params: {
             page: 1,
@@ -23,11 +24,11 @@ export default defineEventHandler(async (event) => {
             language: 'en',
             append_to_response: appendToResponse
         }
+    }).catch((error) => {
+        throw createError(error)
     })
 
-    if (error) return error.value
-
-    return data.value
+    return data
 })
 
 // export default defineEventHandler(async (event) => {
