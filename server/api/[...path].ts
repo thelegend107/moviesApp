@@ -12,7 +12,22 @@ export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig();
     const appendToResponse = 'combined_credits,content_ratings,external_ids,release_dates'
 
-    return config.public.tmdbBase
+    const tmdb = await $fetch(config.public.tmdbBase + tmdbPath, {
+        headers: {
+            Authorization: 'bearer ' + config.tmdbAccessToken,
+            Accept: 'application/json',
+        },
+        retry: 3,
+        retryDelay: 500,
+        params: {
+            page: 1,
+            region: 'US',
+            language: 'en',
+            append_to_response: appendToResponse
+        }
+    })
+
+    return config.tmdbAccessToken
 })
 
 // export default defineEventHandler(async (event) => {
