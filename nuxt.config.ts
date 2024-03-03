@@ -46,11 +46,11 @@ export default defineNuxtConfig({
         pageTransition: { name: 'page', mode: 'out-in' }
     },
     runtimeConfig: {
-        tmdbAccessToken: process.env.TMDB_ACCESS_TOKEN,
+        tmdbAccessToken: process.env.NUXT_TMDB_ACCESS_TOKEN,
         public: {
-            tmdbBase: process.env.TMDB_BASE,
-            tmdbImgBase: process.env.TMDB_IMG_BASE,
-            youtubeVideoBase: process.env.YOUTUBE_VIDEO_BASE
+            tmdbBase: process.env.NUXT_TMDB_BASE,
+            tmdbImgBase: process.env.NUXT_TMDB_IMG_BASE,
+            youtubeVideoBase: process.env.NUXT_YOUTUBE_VIDEO_BASE
         }
     },
 });

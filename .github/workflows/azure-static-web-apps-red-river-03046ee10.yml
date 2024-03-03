@@ -33,10 +33,10 @@ jobs:
           output_location: ".output/public" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
-          YOUTUBE_VIDEO_BASE: ${{ secrets.YOUTUBE_VIDEO_BASE }}
-          TMDB_BASE: ${{ secrets.TMDB_BASE }}
-          TMDB_IMG_BASE: ${{ secrets.TMDB_IMG_BASE }}
-          TMDB_ACCESS_TOKEN: ${{ secrets.TMDB_ACCESS_TOKEN }}
+          NUXT_YOUTUBE_VIDEO_BASE: ${{ secrets.YOUTUBE_VIDEO_BASE }}
+          NUXT_TMDB_BASE: ${{ secrets.TMDB_BASE }}
+          NUXT_TMDB_IMG_BASE: ${{ secrets.TMDB_IMG_BASE }}
+          NUXT_TMDB_ACCESS_TOKEN: ${{ secrets.TMDB_ACCESS_TOKEN }}
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
