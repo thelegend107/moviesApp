@@ -11,9 +11,20 @@ export default defineEventHandler(async (event) => {
         statusMessage: `Not Found: API route: "${event.path}" was not found`
     })
 
-    const config = useRuntimeConfig();
-    const appendToResponse = 'combined_credits,content_ratings,external_ids,release_dates'
+    let appendToResponse = 'combined_credits,content_ratings,external_ids,release_dates'
+    if ((query.videos === 'true'))
+        appendToResponse += ',videos'
 
+    if ((query.images === 'true'))
+        appendToResponse += ',images'
+
+    if ((query.credits === 'true'))
+        appendToResponse += ',credits'
+
+    if ((query.aggregate_credits === 'true'))
+        appendToResponse += ',aggregate_credits'
+
+    const config = useRuntimeConfig();
     const { data } = await axios.get(config.public.tmdbBase + tmdbPath, {
         headers: {
             Authorization: 'bearer ' + config.tmdbAccessToken,
@@ -30,27 +41,3 @@ export default defineEventHandler(async (event) => {
 
     return data
 })
-
-// export default defineEventHandler(async (event) => {
-//     let tmdbPath: string = ''
-//     const query = getQuery(event)
-
-
-//     else throw createError({
-//         statusCode: 404,
-//         statusMessage: `Not Found: API route: "${event.path}" was not found`
-//     })
-
-//     try {
-//         return await tmdb.api(tmdbPath, {
-//             method: 'GET',
-//         })
-//     }
-//     catch (e: any) {
-//         const status = e?.response?.status || 500
-//         setResponseStatus(event, status)
-//         return {
-//             error: e,
-//         }
-//     }
-// })
