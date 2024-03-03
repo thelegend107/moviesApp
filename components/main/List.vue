@@ -70,7 +70,7 @@ watch(interval, async (newVal, oldVal) => {
 </script>
 <template>
     <Section v-if="data && data.results.length > 0" :title="queryItem.title">
-        <template #trending>
+        <template #action>
             <select v-if="prop.queryItem.interval" v-model="interval" class="bg-white dark:bg-dark" :disabled="pending">
                 <option value="day">
                     Today

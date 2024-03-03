@@ -33,6 +33,8 @@ export interface Media {
     created_by?: Person[]
     number_of_seasons?: number
     number_of_episodes?: number
+    still_path?: string
+    air_date?: string
     seasons?: Season[]
     content_ratings?: {
         results: ContentRating[]
@@ -61,6 +63,7 @@ export interface Media {
     belongs_to_collection?: Media
     parts?: Media[]
     // cast
+    aggregate_credits?: Credits
     character?: string
     job?: string
     fetchDate: Date
@@ -77,7 +80,7 @@ export interface Collection {
 
 export interface Season {
     air_date: string
-    episodes: Media[]
+    episodes: Episode[]
     episode_count: number
     id: number
     name: string
@@ -85,6 +88,25 @@ export interface Season {
     poster_path: string
     season_number: number
     vote_average: number
+    fetchDate: Date
+}
+
+export interface Episode {
+    air_date: string;
+    episode_number: number;
+    episode_type: string;
+    id: number;
+    name: string;
+    overview: string;
+    production_code: string;
+    runtime: number;
+    season_number: number;
+    show_id: number;
+    still_path: string;
+    vote_average: number;
+    vote_count: number;
+    crew: Person[]
+    guest_stars: Person[]
 }
 
 export interface ContentRating {
@@ -139,6 +161,16 @@ export interface Person {
     images?: {
         profiles: Image[]
     }
+    roles?: Role[]
+
+    // Credits
+    total_episode_count?: number
+}
+
+export interface Role {
+    credit_id: string
+    character: string
+    episode_count: number
 }
 
 export interface Credits {

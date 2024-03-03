@@ -8,20 +8,20 @@ const { data: collectionData } = await useAsyncData<Collection>(
     () => $fetch('/api/collection/' + prop.collection.id, { params: { credits: false } }),
     {
         transform(response) {
-            // Adjusting the order
             if (response.parts && response.parts.length > 0) {
                 response.parts = response.parts.sort((a, b) => {
-                    if (a.release_date && b.release_date && new Date(a.release_date) < new Date(b.release_date))
-                        return -1
-                    else
+                    if (a.release_date && b.release_date && new Date(a.release_date) >= new Date(b.release_date))
                         return 1
+                    else
+                        return -1
                 })
             }
             return response;
         }
     }
-);
+)
 </script>
+
 <template>
     <Section v-if="collectionData" :title="collectionData.name">
         <template #cards>
