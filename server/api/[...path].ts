@@ -12,8 +12,22 @@ export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig();
     const appendToResponse = 'combined_credits,content_ratings,external_ids,release_dates'
 
+    const { data, error } = await useFetch(config.public.tmdbBase + tmdbPath, {
+        headers: {
+            Authorization: 'bearer ' + config.tmdbAccessToken,
+            Accept: 'application/json',
+        },
+        params: {
+            page: 1,
+            region: 'US',
+            language: 'en',
+            append_to_response: appendToResponse
+        }
+    })
 
-    return config.tmdbAccessToken
+    if (error) return error.value
+
+    return data.value
 })
 
 // export default defineEventHandler(async (event) => {
