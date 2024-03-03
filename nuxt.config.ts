@@ -6,6 +6,12 @@ export default defineNuxtConfig({
         }
     },
     imports: {
+        presets: [
+            {
+                from: '@vercel/speed-insights/nuxt',
+                imports: ['SpeedInsights']
+            }
+        ],
         dirs: ["stores", "types", "components/**"],
         global: true
     },
