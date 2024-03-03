@@ -1,5 +1,6 @@
 {
-    "name": "nuxt-app",
+    "name": "moviesapp",
+    "version": "1.0.0",
     "private": true,
     "type": "module",
     "scripts": {
@@ -11,6 +12,9 @@
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "tsc": "tsc"
+    },
+    "engines": {
+        "node": ">=18.0.0"
     },
     "dependencies": {
         "nuxt": "^3.10.1",
