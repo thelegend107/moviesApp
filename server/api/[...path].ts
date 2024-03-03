@@ -9,18 +9,9 @@ export default defineEventHandler((event) => {
         statusMessage: `Not Found: API route: "${event.path}" was not found`
     })
 
-    try {
-        return tmdb.api(tmdbPath, {
-            method: 'GET',
-        })
-    }
-    catch (e: any) {
-        const status = e?.response?.status || 500
-        setResponseStatus(event, status)
-        return {
-            error: e,
-        }
-    }
+    return tmdb.api(tmdbPath, {
+        method: 'GET',
+    })
 })
 
 // export default defineEventHandler(async (event) => {
