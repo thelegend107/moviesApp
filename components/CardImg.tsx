@@ -9,10 +9,10 @@ export default function CardImg(c: CardImg): JSX.Element {
     let imgUrl: string;
 
     if (c.prop.imagePath && (c.prop.type == 'movie' || c.prop.type == 'tv'))
-        imgUrl = tmdbImage(c.prop.imagePath, TmdbPosterSizes.md);
+        imgUrl = tmdbImage(c.prop.imagePath, TmdbPosterSizes.md)
     else if (c.prop.imagePath && c.prop.type == "person")
-        imgUrl = tmdbImage(c.prop.imagePath, c.prop.personPhotos ? TmdbProfileSizes.og : TmdbPosterSizes.md);
-    else imgUrl = noImage;
+        imgUrl = tmdbImage(c.prop.imagePath, c.prop.personPhotos ? TmdbProfileSizes.og : TmdbPosterSizes.md)
+    else imgUrl = noImage
 
-    return <NuxtImg src={imgUrl} placeholder />;
+    return <NuxtImg alt={c.prop.id ? c.prop.id : c.prop.type} src={imgUrl} placeholder />
 }
