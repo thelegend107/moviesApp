@@ -1,3 +1,5 @@
+import type { AxiosError } from "axios"
+
 export default defineEventHandler(async (event) => {
     let tmdbPath: string = ''
     const query = getQuery(event)
@@ -10,17 +12,13 @@ export default defineEventHandler(async (event) => {
     })
 
     try {
-        const { data } = await tmdb.api(tmdbPath, {
-            method: 'GET',
-        })
-
+        const { data } = await tmdb.api(tmdbPath)
         return data
     }
-    catch (e: any) {
-        const status = e?.response?.status || 500
-        setResponseStatus(event, status)
-        return {
-            error: e,
-        }
+    catch (e) {
+        const error = e as AxiosError & Error
+        throw createError({
+            statusMessage: error.message
+        })
     }
 })
