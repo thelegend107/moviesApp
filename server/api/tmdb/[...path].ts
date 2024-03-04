@@ -1,4 +1,5 @@
 import type { AxiosError } from "axios"
+import CryptoJS from 'crypto-js';
 
 export default defineEventHandler(async (event) => {
     // Check if path exists
@@ -13,8 +14,12 @@ export default defineEventHandler(async (event) => {
     })
 
     // Check if Authorized
+    let decryptedAuth = ''
     const auth = event.headers.get('Authorization')
-    if (auth && auth != config.internalApiKey) throw createError({
+    if (auth)
+        decryptedAuth = CryptoJS.AES.decrypt(auth, config.encryptionKey).toString(CryptoJS.enc.Utf8);
+
+    if (decryptedAuth != config.public.internalApiKey) throw createError({
         statusCode: 401,
         statusMessage: 'Unauthorized access to API',
     })

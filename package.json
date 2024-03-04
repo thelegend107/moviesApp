@@ -14,9 +14,11 @@
         "tsc": "tsc"
     },
     "dependencies": {
+        "@types/crypto-js": "^4.2.2",
         "@vercel/analytics": "^1.2.2",
         "@vercel/speed-insights": "^1.0.10",
         "axios": "^1.6.7",
+        "crypto-js": "^4.2.0",
         "nuxt": "^3.10.1",
         "pinia": "^2.1.7",
         "sass": "^1.71.0",

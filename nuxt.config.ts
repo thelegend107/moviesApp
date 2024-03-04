@@ -46,9 +46,10 @@ export default defineNuxtConfig({
         pageTransition: { name: 'page', mode: 'out-in' }
     },
     runtimeConfig: {
-        internalApiKey: process.env.VITE_INTERNAL_API_KEY,
+        encryptionKey: process.env.ENCRYPTION_KEY,
         tmdbAccessToken: process.env.TMDB_ACCESS_TOKEN,
         public: {
+            internalApiKey: process.env.INTERNAL_API_KEY,
             tmdbBase: process.env.TMDB_BASE,
             tmdbImgBase: process.env.TMDB_IMG_BASE,
             youtubeVideoBase: process.env.YOUTUBE_VIDEO_BASE

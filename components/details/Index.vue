@@ -7,7 +7,7 @@ const prop = defineProps<{
 
 const queryItem: QueryItem = {
     title: 'Movie',
-    path: ('/api/').concat(prop.type, '/', prop.id.toString())
+    path: ''.concat(prop.type, '/', prop.id.toString())
 }
 
 const relatedQueryItems: ComputedRef<QueryItem[]> = computed(() => {
@@ -28,15 +28,12 @@ const relatedQueryItems: ComputedRef<QueryItem[]> = computed(() => {
 
 const { data, error } = await useAsyncData<Media & Person>(
     queryItem.path,
-    () => $fetch(queryItem.path, {
+    () => nuxtApp.$tmdbAPI(queryItem.path, {
         params: {
             credits: prop.type == 'movie',
             videos: prop.type != 'person',
             images: prop.type == 'person',
             aggregate_credits: prop.type == 'tv'
-        },
-        headers: {
-            Authorization: import.meta.env.VITE_INTERNAL_API_KEY
         }
     }),
     {
