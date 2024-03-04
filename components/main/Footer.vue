@@ -1,10 +1,14 @@
+<script lang="ts" setup>
+const mode = useColorMode()
+</script>
+
 <template>
     <div class="flex flex-col md:flex-row gap-4 justify-between p-8">
         <div class="flex flex-col gap-4 md:gap-1">
             <div class="flex gap-1 items-center">
                 <p>Made with: </p>
-                <a target="_blank" href="https://azure.com">
-                    <Icon name="vscode-icons:file-type-azure" size="30" />
+                <a target="_blank" href="https://vercel.com">
+                    <Icon :name="mode.value == 'dark' ? 'vscode-icons:file-type-vercel' : 'vscode-icons:file-type-light-vercel'" size="30" />
                 </a>
                 <a target="_blank" href="https://nuxt.com">
                     <Icon name="vscode-icons:file-type-nuxt" size="35" />
