@@ -14,5 +14,5 @@ export default function CardImg(c: CardImg): JSX.Element {
         imgUrl = tmdbImage(c.prop.imagePath, c.prop.personPhotos ? TmdbProfileSizes.og : TmdbPosterSizes.md)
     else imgUrl = noImage
 
-    return <NuxtImg format="webp" alt={c.prop.id ? c.prop.id : c.prop.type} src={imgUrl} placeholder />
+    return <NuxtImg format="webp" alt={c.prop.id ? c.prop.id.toString() : c.prop.type} src={imgUrl} placeholder />
 }
