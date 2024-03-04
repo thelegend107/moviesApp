@@ -1,19 +1,19 @@
 export const queryList: QueryList = {
     trending: [
-        { title: 'Trending Movies', interval: 'day', path: '/api/trending/movie/' },
-        { title: 'Trending TV Shows', interval: 'day', path: '/api/trending/tv/' },
+        { title: 'Trending Movies', interval: 'day', path: 'trending/movie/' },
+        { title: 'Trending TV Shows', interval: 'day', path: 'trending/tv/' },
     ],
     movies: [
-        { title: 'Now Playing', path: '/api/movie/now_playing' },
-        { title: 'Upcoming', path: '/api/movie/upcoming' },
-        { title: 'Trending', interval: 'day', path: '/api/trending/movie/' },
-        { title: 'Popular', path: '/api/movie/popular' }
+        { title: 'Now Playing', path: 'movie/now_playing' },
+        { title: 'Upcoming', path: 'movie/upcoming' },
+        { title: 'Trending', interval: 'day', path: 'trending/movie/' },
+        { title: 'Popular', path: 'movie/popular' }
     ],
     tv: [
-        { title: 'Airing Today', path: '/api/tv/airing_today' },
-        { title: 'On The Air', path: '/api/tv/on_the_air' },
-        { title: 'Trending', interval: 'day', path: '/api/trending/tv/' },
-        { title: 'Popular', path: '/api/tv/popular' }
+        { title: 'Airing Today', path: 'tv/airing_today' },
+        { title: 'On The Air', path: 'tv/on_the_air' },
+        { title: 'Trending', interval: 'day', path: 'trending/tv/' },
+        { title: 'Popular', path: 'tv/popular' }
     ]
 }
 

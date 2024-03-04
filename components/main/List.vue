@@ -18,7 +18,7 @@ if (prop.queryItem.interval) {
 
 const { data, pending } = await useAsyncData<PageResult<Media & Person>>(
     route.path + prop.queryItem.path,
-    () => $fetch(apiPath.value ? apiPath.value : prop.queryItem.path),
+    () => nuxtApp.$tmdbAPI(apiPath.value ? apiPath.value : prop.queryItem.path),
     {
         transform: (response) => {
             response.results.forEach((r) => {

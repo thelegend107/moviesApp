@@ -14,10 +14,10 @@ const params: RouteParams = {
 
 const currentSeason = toRef<number>(params.seasonNumber)
 
-const showPath = '/api/tv/' + params.id
+const showPath = 'tv/' + params.id
 const { data: showData } = await useAsyncData<Media>(
     showPath,
-    () => $fetch(showPath, { params: { credits: false } }),
+    () => nuxtApp.$tmdbAPI(showPath, { params: { credits: false } }),
     {
         transform(response) {
             response.fetchDate = new Date
@@ -40,7 +40,7 @@ const { data: showData } = await useAsyncData<Media>(
 const seasonPath = ref<string>(showPath + '/season/' + params.seasonNumber)
 const { data: seasonData, error } = await useAsyncData<Season>(
     seasonPath.value,
-    () => $fetch(seasonPath.value),
+    () => nuxtApp.$tmdbAPI(seasonPath.value),
     {
         transform(response) {
             response.fetchDate = new Date

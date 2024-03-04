@@ -1,20 +1,17 @@
 <script lang="ts" setup>
+const nuxtApp = useNuxtApp()
 const prop = defineProps<{
     collection: Media
 }>()
 
+const collectionPath: string = 'collection/' + prop.collection.id
 const { data: collectionData } = await useAsyncData<Collection>(
-    '/api/collection/' + prop.collection.id,
-    () => $fetch('/api/collection/' + prop.collection.id, { params: { credits: false } }),
+    collectionPath,
+    () => nuxtApp.$tmdbAPI(collectionPath, { params: { credits: false } }),
     {
         transform(response) {
             if (response.parts && response.parts.length > 0) {
-                response.parts = response.parts.sort((a, b) => {
-                    if (a.release_date && b.release_date && new Date(a.release_date) >= new Date(b.release_date))
-                        return 1
-                    else
-                        return -1
-                })
+                response.parts = response.parts.sort((a, b) => a.release_date && b.release_date && new Date(a.release_date) > new Date(b.release_date) ? 1 : -1)
             }
             return response;
         }
