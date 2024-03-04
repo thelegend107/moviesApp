@@ -13,9 +13,6 @@
         "lint:fix": "eslint . --fix",
         "tsc": "tsc"
     },
-    "engines": {
-        "node": ">=18.0.0"
-    },
     "dependencies": {
         "@vercel/speed-insights": "^1.0.10",
         "axios": "^1.6.7",
