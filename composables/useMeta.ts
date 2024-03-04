@@ -1,6 +1,4 @@
-const imageUrl:string = 'https://i.ibb.co/02Y408R/og-Image.jpg';
-
-export default function(title:string, description:string, image:string = imageUrl) {
+export default function (title: string, description: string, image: string = 'https://i.ibb.co/02Y408R/og-Image.jpg', metaHead: boolean = false) {
     useSeoMeta({
         title: title,
         description: description,
@@ -13,16 +11,18 @@ export default function(title:string, description:string, image:string = imageUr
         twitterImage: image,
         twitterCard: 'summary'
     })
-    
-    useHead({
-        htmlAttrs: {
-            lang: 'en'
-        },
-        link: [
-            {
-                rel: 'icon',
-                href: '/favicon.ico'
-            }
-        ]
-    })
+
+    if (metaHead) {
+        useHead({
+            htmlAttrs: {
+                lang: 'en'
+            },
+            link: [
+                {
+                    rel: 'icon',
+                    href: '/favicon.ico'
+                }
+            ]
+        })
+    }
 }

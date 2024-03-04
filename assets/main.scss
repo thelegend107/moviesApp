@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@layer base {
+    * {
+        @apply transition-all ease-in-out duration-500;
+    }
+
+    :root:has(.no-scroll) {
+        overflow: hidden;
+    }
+
+    iframe:focus-visible {
+        outline: none;
+        border: none;
+    }
+
+    h1 {
+        @apply text-2xl;
+    }
+
+    h2 {
+        @apply text-xl;
+    }
+
+    h3 {
+        @apply text-lg;
+    }
+
+    a {
+        &:hover {
+            @apply text-secondaryDark dark:text-primaryDark;
+        }
+    }
+
+    select {
+        @apply rounded-md px-2 py-1 border border-secondary dark:border-primary;
+    }
+
+    header {
+        @apply bg-white dark:bg-dark shadow-around shadow-neutral-300 dark:shadow-neutral-950;
+        //@apply shadow-lg shadow-secondaryDark dark:shadow-primaryDark;
+    }
+
+    footer {
+        @apply bg-white dark:bg-dark shadow-around shadow-neutral-300 dark:shadow-neutral-950;
+    }
+
+    // Dark & Light Mode
+    body {
+        @apply font-poppins tracking-wide;
+        @apply bg-light text-neutral-950;
+
+        select,
+        input {
+            @apply bg-light text-neutral-950;
+        }
+    }
+
+    .dark body {
+        @apply bg-neutral-950 text-light;
+
+        select,
+        input {
+            @apply bg-neutral-950 text-light;
+        }
+    }
+}
+
+@layer components {
+    .btn {
+        @apply text-white dark:text-black;
+        @apply flex items-center justify-center space-x-2;
+        @apply rounded-md py-2 px-4;
+        @apply shadow-md shadow-black;
+    }
+}
+
+header {
+    .icon {
+        @apply text-secondary dark:text-primary;
+    }
+
+    a {
+        &:hover {
+            .icon {
+                @apply text-inherit
+            }
+        }
+    }
+}
+
+// Active Nuxt Page
+.router-link-active {
+    @apply text-secondaryDark dark:text-primaryDark;
+
+    .icon {
+        @apply text-secondaryDark dark:text-primaryDark;
+    }
+}
+
+// Default Nuxt Page Transitions
+.page-enter-active,
+.page-leave-active {
+    transition: all 0.4s;
+}
+
+.page-enter-from,
+.page-leave-to {
+    opacity: 0;
+    filter: blur(1rem);
+}
+
+// Default Vue Transitions
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+}
