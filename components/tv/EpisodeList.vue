@@ -7,7 +7,7 @@ defineProps<{
 <template>
     <div v-for="ep in season.episodes" :key="ep.id" class="flex flex-col sm:flex-row p-2 rounded-lg divide-y-4 sm:divide-y-0 sm:divide-x-4 divide-secondary dark:divide-primary">
         <div class="shadow-lg shadow-neutral-400 dark:shadow-black sm:rounded-none sm:rounded-l-lg">
-            <NuxtImg :src="ep.still_path ? tmdbImage(ep.still_path, TmdbPosterSizes.md) : 'https://dummyimage.com/342x162/000/fff.png&text=No+Image+Available'" height="162" width="342" class="rounded-t-lg w-full sm:w-min sm:rounded-none sm:rounded-l-lg" style="object-fit: cover; object-position: 0 15%;" />
+            <NuxtImg format="webp" alt="Episode Still Image" :src="ep.still_path ? tmdbImage(ep.still_path, TmdbPosterSizes.md) : 'https://dummyimage.com/342x162/000/fff.png&text=No+Image+Available'" height="162" width="342" class="rounded-t-lg w-full sm:w-min sm:rounded-none sm:rounded-l-lg" style="object-fit: cover; object-position: 0 15%;" />
         </div>
         <div class="flex flex-col gap-2 rounded-b-lg sm:rounded-none sm:rounded-r-lg p-2 lg:p-4 w-full bg-white dark:bg-dark shadow-md shadow-neutral-400 dark:shadow-black">
             <p class="font-semibold text-secondary dark:text-primary sm:text-xl">

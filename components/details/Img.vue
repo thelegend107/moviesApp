@@ -58,7 +58,7 @@ if (prop.externalIds) {
 
 <template>
     <div class="hidden sm:flex sm:flex-col divide-y-4 divide-secondary dark:divide-primary">
-        <NuxtImg alt="detailImage" class="h-96 w-full" :src="imgSrc()" :class="{ '-mt-16': type != 'person', 'rounded-t-xl': externalLinks.length > 0, 'rounded-xl': externalLinks.length == 0 }" />
+        <NuxtImg format="webp" alt="detailImage" class="h-96 w-full" :src="imgSrc()" :class="{ '-mt-16': type != 'person', 'rounded-t-xl': externalLinks.length > 0, 'rounded-xl': externalLinks.length == 0 }" />
         <ExternalLinks v-if="externalLinks.length > 0" :external-links="externalLinks" :type="type" />
     </div>
 </template>
