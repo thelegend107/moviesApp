@@ -28,7 +28,7 @@ defineProps<{
         <p class="text-2xl font-semibold">
             Season
         </p>
-        <select class="text-sm" @change="$emit('seasonSelect', ($event.target as HTMLSelectElement).value)">
+        <select class="text-sm" :aria-label="`${show.name} season ${seasonNumber}`" @change="$emit('seasonSelect', ($event.target as HTMLSelectElement).value)">
             <option v-for="s in show.seasons?.filter(x => x.season_number).map(x => x.season_number)" :key="s" :value="s" :selected="s == seasonNumber">
                 {{ s }}
             </option>

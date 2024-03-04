@@ -68,10 +68,11 @@ watch(interval, async (newVal, oldVal) => {
     }
 })
 </script>
+
 <template>
     <Section v-if="data && data.results.length > 0" :title="queryItem.title">
         <template #action>
-            <select v-if="prop.queryItem.interval" v-model="interval" class="bg-white dark:bg-dark" :disabled="pending">
+            <select v-if="prop.queryItem.interval" v-model="interval" :aria-label="prop.queryItem.title + ' ' + prop.queryItem.interval" class="bg-white dark:bg-dark" :disabled="pending">
                 <option value="day">
                     Today
                 </option>
@@ -81,6 +82,7 @@ watch(interval, async (newVal, oldVal) => {
             </select>
             <icon v-if="pending" class="text-secondary dark:text-primary" name="svg-spinners:180-ring-with-bg" />
         </template>
+
         <template #cards>
             <cards :snap-x="snapX">
                 <section-card v-for="r in data?.results" :key="r.id" :info="r" :path="queryItem.path" />
