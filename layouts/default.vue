@@ -4,7 +4,6 @@
             <slot name="header" />
         </header>
         <main>
-            <SpeedInsights />
             <slot name="main" />
         </main>
         <footer class="mt-auto">

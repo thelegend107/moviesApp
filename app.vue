@@ -9,6 +9,7 @@ const mode = useColorMode();
 <template>
     <NuxtLoadingIndicator :color="mode.value == 'dark' ? '#FF4000' : '#8B1D37'" />
     <NuxtLayout>
+        <SpeedInsights />
         <template #header>
             <MainHeader />
         </template>
