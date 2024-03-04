@@ -46,6 +46,7 @@ export default defineNuxtConfig({
         pageTransition: { name: 'page', mode: 'out-in' }
     },
     runtimeConfig: {
+        internalApiKey: process.env.VITE_INTERNAL_API_KEY,
         tmdbAccessToken: process.env.TMDB_ACCESS_TOKEN,
         public: {
             tmdbBase: process.env.TMDB_BASE,

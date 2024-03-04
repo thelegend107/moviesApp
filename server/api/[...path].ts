@@ -1,9 +1,10 @@
 import type { AxiosError } from "axios"
 
 export default defineEventHandler(async (event) => {
+    // Check if path exists
     let tmdbPath: string = ''
+    const config = useRuntimeConfig()
     const query = getQuery(event)
-    const tmdb = new TmdbAPI((query.credits === 'true'), (query.videos === 'true'), (query.images === 'true'), (query.aggregate_credits === 'true'))
 
     if (event.context.params?.path) tmdbPath = event.context.params.path
     else throw createError({
@@ -11,7 +12,15 @@ export default defineEventHandler(async (event) => {
         statusMessage: `Not Found: API route: "${event.path}" was not found`
     })
 
+    // Check if Authorized
+    const auth = event.headers.get('Authorization')
+    if (auth && auth != config.internalApiKey) throw createError({
+        statusCode: 401,
+        statusMessage: 'Unauthorized access to API',
+    })
+
     try {
+        const tmdb = new TmdbAPI((query.credits === 'true'), (query.videos === 'true'), (query.images === 'true'), (query.aggregate_credits === 'true'))
         const { data } = await tmdb.api(tmdbPath)
         return data
     }

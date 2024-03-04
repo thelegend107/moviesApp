@@ -34,6 +34,9 @@ const { data, error } = await useAsyncData<Media & Person>(
             videos: prop.type != 'person',
             images: prop.type == 'person',
             aggregate_credits: prop.type == 'tv'
+        },
+        headers: {
+            Authorization: import.meta.env.VITE_INTERNAL_API_KEY
         }
     }),
     {

@@ -17,7 +17,12 @@ const currentSeason = toRef<number>(params.seasonNumber)
 const showPath = '/api/tv/' + params.id
 const { data: showData } = await useAsyncData<Media>(
     showPath,
-    () => $fetch(showPath, { params: { credits: false } }),
+    () => $fetch(showPath, {
+        headers: {
+            Authorization: import.meta.env.VITE_INTERNAL_API_KEY
+        },
+        params: { credits: false }
+    }),
     {
         transform(response) {
             response.fetchDate = new Date

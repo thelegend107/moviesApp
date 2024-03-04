@@ -5,7 +5,12 @@ const prop = defineProps<{
 
 const { data: collectionData } = await useAsyncData<Collection>(
     '/api/collection/' + prop.collection.id,
-    () => $fetch('/api/collection/' + prop.collection.id, { params: { credits: false } }),
+    () => $fetch('/api/collection/' + prop.collection.id, {
+        headers: {
+            Authorization: import.meta.env.VITE_INTERNAL_API_KEY
+        },
+        params: { credits: false }
+    }),
     {
         transform(response) {
             if (response.parts && response.parts.length > 0) {
