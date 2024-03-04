@@ -91,8 +91,8 @@ if (error.value) {
 
 <template>
     <YoutubeTrailer v-if="type != 'person' && data?.trailerVideos && data.trailerVideos?.length > 0" class="h-[57vi] sm:h-[500px]" :videos="data.trailerVideos" />
-    <NuxtImg v-else-if="type != 'person'" class="w-full h-[57vi] sm:h-[500px]" :src="tmdbImage(data?.backdrop_path || data?.poster_path, TmdbBackdropSizes.og)" style="object-fit: cover; object-position: 0 15%;" />
-    <NuxtImg v-else class="bg-neutral-950 w-full max-h-[500px] sm:hidden" :src="tmdbImage(data?.profile_path, TmdbProfileSizes.og)" style="object-fit: cover; object-position: 0 15%;" />
+    <NuxtImg v-else-if="type != 'person'" format="webp" class="w-full h-[57vi] sm:h-[500px]" alt="backdrop Image" :src="tmdbImage(data?.backdrop_path || data?.poster_path, TmdbBackdropSizes.og)" style="object-fit: cover; object-position: 0 15%;" />
+    <NuxtImg v-else format="webp" class="bg-neutral-950 w-full max-h-[500px] sm:hidden" alt="Profile Image" :src="tmdbImage(data?.profile_path, TmdbProfileSizes.og)" style="object-fit: cover; object-position: 0 15%;" />
     <div class="flex sm:justify-center p-4 gap-2 bg-white dark:bg-dark">
         <DetailsImg :img-path="data?.poster_path || data?.profile_path" :external-ids="data?.external_ids" :type="type" />
         <div class="flex flex-col gap-4 sm:p-4 sm:w-1/2">
