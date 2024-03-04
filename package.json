@@ -17,6 +17,8 @@
         "node": ">=18.0.0"
     },
     "dependencies": {
+        "@vercel/speed-insights": "^1.0.10",
+        "axios": "^1.6.7",
         "nuxt": "^3.10.1",
         "pinia": "^2.1.7",
         "sass": "^1.71.0",

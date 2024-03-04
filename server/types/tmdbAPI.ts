@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export class TmdbAPI {
     api;
 
@@ -17,14 +19,12 @@ export class TmdbAPI {
         if (aggregate_credits)
             appendToResponse += ',aggregate_credits'
 
-        this.api = $fetch.create({
+        this.api = axios.create({
             baseURL: config.public.tmdbBase,
             headers: {
                 Authorization: 'bearer ' + config.tmdbAccessToken,
                 Accept: 'application/json',
             },
-            retry: 3,
-            retryDelay: 500,
             params: {
                 page: 1,
                 region: 'US',

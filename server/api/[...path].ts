@@ -10,9 +10,11 @@ export default defineEventHandler(async (event) => {
     })
 
     try {
-        return await tmdb.api(tmdbPath, {
+        const { data } = await tmdb.api(tmdbPath, {
             method: 'GET',
         })
+
+        return data
     }
     catch (e: any) {
         const status = e?.response?.status || 500
