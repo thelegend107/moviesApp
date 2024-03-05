@@ -1,3 +1,8 @@
+<script lang="ts" setup>
+const searchIcons: string[] = ['mingcute:search-line', 'mingcute:search-fill']
+const iconToggle = ref<number>(0)
+</script>
+
 <template>
     <div class="flex justify-between sticky p-4">
         <nav class="flex gap-4 font-medium">
@@ -20,6 +25,11 @@
                 </p>
             </NuxtLink>
         </nav>
-        <ColorModeSwitch />
+        <nav class="flex gap-2">
+            <button class="flex" @mouseover="iconToggle = 1" @mouseout="iconToggle = 0">
+                <Icon :name="searchIcons[iconToggle]" />
+            </button>
+            <ColorModeSwitch />
+        </nav>
     </div>
 </template>

@@ -9,13 +9,13 @@ export default function YoutubeTrailer(d: Trailer): JSX.Element {
     const url = useRequestURL()
     const params: string[] = [
         'autoplay=1',
-        'controls=0',
+        'controls=1',
         'disablekb=0',
         'rel=0',
         'playsinline=1',
         `origin=${url.origin}`,
         'loop=1',
-        'mute=0',
+        'mute=1',
         'iv_load_policy'
     ]
     let defaultVideo: Video = {} as Video;
