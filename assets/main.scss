@@ -26,7 +26,7 @@
     }
 
     a {
-        @apply transition-all ease-in-out duration-500;
+        @apply transition-all ease-in-out;
 
         &:hover {
             @apply text-secondaryDark dark:text-primaryDark;

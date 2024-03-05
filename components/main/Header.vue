@@ -26,9 +26,9 @@ const iconToggle = ref<number>(0)
             </NuxtLink>
         </nav>
         <nav class="flex gap-2">
-            <button class="flex" @mouseover="iconToggle = 1" @mouseout="iconToggle = 0">
+            <!-- <button class="flex" @mouseover="iconToggle = 1" @mouseout="iconToggle = 0">
                 <Icon :name="searchIcons[iconToggle]" />
-            </button>
+            </button> -->
             <ColorModeSwitch />
         </nav>
     </div>
