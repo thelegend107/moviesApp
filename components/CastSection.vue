@@ -13,7 +13,7 @@ withDefaults(defineProps<{
             <Cards>
                 <Card v-for="c in cast" :id="c.id" :key="c.id" :image-path="c.profile_path" :name="c.name" :type="'person'">
                     <template #additionalInfo>
-                        <p class="font-extralight">
+                        <p class="font-extralight line-clamp-4">
                             {{ c.character }}
                         </p>
                     </template>
