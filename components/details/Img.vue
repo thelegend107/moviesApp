@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const prop = withDefaults(defineProps<{
     imgPath?: string
-    type: MediaType | 'person'
+    type: MediaType
     externalIds?: ExternalIds
 }>(), {
     type: 'movie'

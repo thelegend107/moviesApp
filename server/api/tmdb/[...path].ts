@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
     })
 
     try {
-        const tmdb = new TmdbAPI((query.credits === 'true'), (query.videos === 'true'), (query.images === 'true'), (query.aggregate_credits === 'true'))
+        const tmdb = new TmdbAPI((query.credits === 'true'), (query.videos === 'true'), (query.images === 'true'), (query.aggregate_credits === 'true'), (query.query?.toString()))
         const { data } = await tmdb.api(tmdbPath)
         return data
     }
