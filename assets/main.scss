@@ -8,6 +8,10 @@
         overflow: hidden;
     }
 
+    :root {
+        @apply scrollbar scrollbar-track-transparent scrollbar-thumb-neutral-700;
+    }
+
     iframe:focus-visible {
         outline: none;
         border: none;
