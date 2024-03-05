@@ -2,7 +2,7 @@
 const prop = defineProps<{
     crew?: Person[],
     creators?: Person[],
-    type: MediaType | 'person'
+    type: MediaType
 }>()
 
 const showCreators = ref<Person[]>([]);

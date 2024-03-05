@@ -2,7 +2,7 @@
 const nuxtApp = useNuxtApp()
 const prop = defineProps<{
     id: number,
-    type: MediaType | 'person'
+    type: MediaType
 }>()
 
 const queryItem: QueryItem = {

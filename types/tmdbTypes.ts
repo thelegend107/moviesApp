@@ -129,7 +129,7 @@ export interface ReleaseDate {
     type: number
 }
 
-export type MediaType = 'movie' | 'tv'
+export type MediaType = 'movie' | 'tv' | 'person'
 
 export enum Interval {
     Day = 'day',

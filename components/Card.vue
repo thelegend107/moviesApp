@@ -3,7 +3,7 @@ export interface Card {
     id?: number
     imagePath?: string
     name?: string
-    type: MediaType | "person"
+    type: MediaType
     seasonNumber?: number
     personPhotos?: boolean
 }
