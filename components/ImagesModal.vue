@@ -59,8 +59,8 @@ onBeforeUnmount(() => {
                 <div class="z-10 ml-2 flex h-1/8 rounded-full sm:m-0 sm:h-full sm:rounded-none items-center bg-white dark:bg-black p-1 md:p-4 lg:p-10 cursor-pointer opacity-45 hover:opacity-75" @click="imagesNavLeft()">
                     <Icon class="hover:opacity-75" name="teenyicons:left-outline" />
                 </div>
-                <Transition class="absolute inset-0 top-8 m-auto h-[70dvh] sm:top-16 sm:h-full" mode="out-in">
-                    <NuxtImg :key="currentImgIndex" format="webp" :alt="title" :src="tmdbImage(images[currentImgIndex].file_path, TmdbProfileSizes.og)" class="h-full" />
+                <Transition class="absolute inset-0 top-8 m-auto h-[140dvi] sm:top-16 sm:h-full" mode="out-in">
+                    <NuxtImg :key="currentImgIndex" format="webp" :alt="title" :src="tmdbImage(images[currentImgIndex].file_path, TmdbProfileSizes.og)" class="h-full" style="object-fit: cover;" />
                 </Transition>
                 <div class="z-10 flex mr-2 h-1/8 rounded-full sm:m-0 sm:h-full sm:rounded-none items-center bg-white dark:bg-black p-1 md:p-4 lg:p-10 cursor-pointer opacity-45 hover:opacity-75" @click="imagesNavRight()">
                     <Icon name="teenyicons:right-outline" />
