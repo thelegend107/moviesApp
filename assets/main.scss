@@ -25,10 +25,13 @@
         @apply text-lg;
     }
 
-    a {
-        @apply transition-all ease-in-out;
+    button {
+        @apply transition-all ease-in-out duration-500;
+    }
 
+    a {
         &:hover {
+            @apply transition-all ease-in-out duration-500;
             @apply text-secondaryDark dark:text-primaryDark;
         }
     }
