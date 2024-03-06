@@ -9,5 +9,8 @@ export default defineEventHandler((event) => {
     })
 
     const config = useRuntimeConfig()
-    return CryptoJS.AES.encrypt(key, config.encryptionKey).toString()
+    const encrptedToken = CryptoJS.AES.encrypt(key, config.encryptionKey).toString()
+    const userToken = setCookie(event, 'user-token', encrptedToken)
+
+    return encrptedToken
 })
