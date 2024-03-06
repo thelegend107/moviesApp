@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const colorMode = useColorMode();
-const darkMode = ref(true);
+const darkMode = ref(colorMode.value == 'dark');
 
 function toggleColorMode() {
     darkMode.value = !darkMode.value;
