@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
     <div class="relative select-none">
-        <div class="z-20 absolute flex bg-white dark:bg-dark pr-4 p-2 gap-1 rounded-br-lg opacity-65 hover:opacity-100 cursor-pointer" @click="$router.push('/shows/' + show.id)">
+        <div class="z-20 absolute flex bg-white transition-all ease-in-out duration-500 dark:bg-dark pr-4 p-2 gap-1 rounded-br-lg opacity-65 hover:opacity-100 cursor-pointer" @click="$router.push('/shows/' + show.id)">
             <Icon name="mingcute:arrow-left-fill" />
             <p>Back</p>
         </div>

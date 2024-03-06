@@ -7,7 +7,7 @@ const showSearchBar = ref<boolean>(false)
 <template>
     <div class="flex justify-between relative p-4">
         <SearchBar :show="showSearchBar" @close-search-bar="showSearchBar = false" />
-        <nav class="flex gap-4 font-medium">
+        <nav class="flex gap-4 font-medium duration-500">
             <NuxtLink class="flex items-center gap-1" :to="{ path: '/' }">
                 <Icon name="ri:home-fill" />
                 <p class="hidden x-sm:block">
@@ -28,7 +28,7 @@ const showSearchBar = ref<boolean>(false)
             </NuxtLink>
         </nav>
         <nav class="flex gap-2">
-            <button class="flex" @mouseover="iconToggle = 1" @mouseout="iconToggle = 0" @click="showSearchBar = true">
+            <button class="flex px-2" @mouseover="iconToggle = 1" @mouseout="iconToggle = 0" @click="showSearchBar = true">
                 <Icon :name="searchIcons[iconToggle]" />
             </button>
             <ColorModeSwitch />
