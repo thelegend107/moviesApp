@@ -5,6 +5,7 @@ const prop = defineProps<{
     type: MediaType
 }>()
 
+const ytKey = ref<number>(Math.random() * 5000)
 const queryItem: QueryItem = {
     title: 'Movie',
     path: ''.concat(prop.type, '/', prop.id.toString())
@@ -87,10 +88,16 @@ if (error.value) {
         message: error.value?.statusCode == 404 ? `${prop.id} ${prop.type} was not found` : error.value?.message
     })
 }
+
+onMounted(async () => {
+    setTimeout(() => {
+        ytKey.value = Math.random() * 6000
+    }, 200);
+})
 </script>
 
 <template>
-    <YoutubeTrailer v-if="type != 'person' && data?.trailerVideos && data.trailerVideos?.length > 0" class="h-[57vi] sm:h-[500px]" :videos="data.trailerVideos" />
+    <YoutubeTrailer v-if="type != 'person' && data?.trailerVideos && data.trailerVideos?.length > 0" :key="ytKey" class="h-[57vi] sm:h-[500px]" :videos="data.trailerVideos" />
     <NuxtImg v-else-if="type != 'person'" format="webp" class="w-full h-[57vi] sm:h-[500px]" alt="backdrop Image" :src="tmdbImage(data?.backdrop_path || data?.poster_path, TmdbBackdropSizes.og)" style="object-fit: cover; object-position: 0 15%;" />
     <NuxtImg v-else format="webp" class="bg-neutral-950 w-full max-h-[500px] sm:hidden" alt="Profile Image" :src="tmdbImage(data?.profile_path, TmdbProfileSizes.og)" style="object-fit: cover; object-position: 0 15%;" />
     <div class="flex sm:justify-center p-4 gap-2 bg-white dark:bg-dark">
