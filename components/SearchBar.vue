@@ -50,7 +50,7 @@ watch(() => (prop.show), (newVal) => {
             </button>
         </div>
         <Transition mode="out-in">
-            <div v-if="data && data?.results.length > 0 && show" class="size-[100dvi] overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-neutral-700 p-2 bg-light dark:bg-neutral-950">
+            <div v-if="data && data?.results.length > 0 && show" class="h-screen overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-neutral-700 p-2 bg-light dark:bg-neutral-950">
                 <div class="flex gap-2 justify-center flex-wrap mb-10">
                     <Card v-for="d in data.results" :id="d.id" :key="d.id" :image-path="d.poster_path || d.profile_path" :type="d.media_type" :name="d.name || d.title" @click="closeSearchBar()" />
                 </div>
