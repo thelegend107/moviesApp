@@ -28,7 +28,7 @@ const showSearchBar = ref<boolean>(false)
             </NuxtLink>
         </nav>
         <nav class="flex gap-2">
-            <button class="flex px-2" @mouseover="iconToggle = 1" @mouseout="iconToggle = 0" @click="showSearchBar = true">
+            <button class="flex px-2" @pointerenter="iconToggle = 1" @pointerleave="iconToggle = 0" @click="showSearchBar = true">
                 <Icon :name="searchIcons[iconToggle]" />
             </button>
             <ColorModeSwitch />
