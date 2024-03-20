@@ -16,7 +16,7 @@ const { data } = await useLazyAsyncData<PageResult<Media & Person>>(
     () => nuxtApp.$tmdbAPI('search/multi', { params: { query: search.value } }),
     {
         transform(response) {
-            if (response.results) {
+            if (response.results.length > 8) {
                 response.results.pop()
                 response.results.pop()
             }
