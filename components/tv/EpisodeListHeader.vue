@@ -12,7 +12,7 @@ defineProps<{
             <Icon name="mingcute:arrow-left-fill" />
             <p>Back</p>
         </div>
-        <NuxtImg format="webp" class="w-full h-[40vi] sm:h-[500px]" :src="tmdbImage(show.backdrop_path || show.poster_path, TmdbBackdropSizes.og)" style="object-fit: cover; object-position: 0 15%;" />
+        <NuxtImg format="webp" class="w-full h-[40vi] sm:h-[500px]" :src="tmdbImage(show.backdrop_path || show.poster_path, TmdbBackdropSizes.og)" style="object-fit: cover; object-position: 50% 15%;" />
         <div class="absolute inset-0 size-full z-10 flex justify-center items-end flex-wrap">
             <div class="flex flex-col items-center justify-center size-full sm:size-auto bg-[rgba(255,255,255,0.85)] dark:bg-[rgba(0,0,0,0.85)] text-secondary dark:text-primary gap-2 py-4 sm:px-32 sm:rounded-t-lg">
                 <h1 class="text-4xl sm:text-5xl">
