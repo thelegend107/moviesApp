@@ -7,6 +7,7 @@ const prop = defineProps<{
 
 const ytKey = ref<number>(Math.random() * 5000)
 const queryItem: QueryItem = {
+    id: 0,
     title: 'Movie',
     path: ''.concat(prop.type, '/', prop.id.toString())
 }
@@ -15,11 +16,13 @@ const relatedQueryItems: ComputedRef<QueryItem[]> = computed(() => {
     const items: QueryItem[] = [];
 
     items.push({
+        id: Math.floor(Math.random() * 15000),
         title: 'Recommended ' + (prop.type == 'movie' ? 'Movies' : 'Shows'),
         path: queryItem.path + '/recommendations'
     })
 
     items.push({
+        id: Math.floor(Math.random() * 15001),
         title: 'Similar ' + (prop.type == 'movie' ? 'Movies' : 'Shows'),
         path: queryItem.path + '/similar'
     })
@@ -120,6 +123,6 @@ onMounted(async () => {
         <PersonKnownFor v-if="data?.combined_credits" :combined-credits="data?.combined_credits" :known-for-department="data.known_for_department" />
     </div>
     <div v-else>
-        <MainList v-for="qi in relatedQueryItems" :key="qi.path" :query-item="qi" />
+        <MainList v-for="qi in relatedQueryItems" :key="qi.path" :query-item="qi" :section-id="qi.id" />
     </div>
 </template>

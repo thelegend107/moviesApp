@@ -55,4 +55,7 @@ export default defineNuxtConfig({
             youtubeVideoBase: process.env.YOUTUBE_VIDEO_BASE
         }
     },
+    experimental: {
+        componentIslands: true
+    }
 });

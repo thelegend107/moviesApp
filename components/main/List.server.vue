@@ -3,22 +3,29 @@ const nuxtApp = useNuxtApp()
 const route = useRoute()
 
 interface List {
+    sectionId: number,
     queryItem: QueryItem,
 }
 
 const prop = defineProps<List>()
-const interval = ref()
-const apiPath = ref()
-const snapX = ref(true)
+let apiPath: string
+let eventDispatch: string
 
 if (prop.queryItem.interval) {
-    interval.value = prop.queryItem.interval
-    apiPath.value = prop.queryItem.path + prop.queryItem.interval
+    apiPath = prop.queryItem.path + prop.queryItem.interval
+
+    eventDispatch = `this.dispatchEvent(new CustomEvent('section-interval-change', {
+        bubbles: true,
+        detail: {
+            sectionId: ${prop.sectionId},
+            interval: event.target.value,
+        } 
+    }))`
 }
 
 const { data, pending } = await useAsyncData<PageResult<Media & Person>>(
     route.path + prop.queryItem.path,
-    () => nuxtApp.$tmdbAPI(apiPath.value ? apiPath.value : prop.queryItem.path),
+    () => nuxtApp.$tmdbAPI(apiPath ? apiPath : prop.queryItem.path),
     {
         transform: (response) => {
             response.results.forEach((r) => {
@@ -49,48 +56,28 @@ const { data, pending } = await useAsyncData<PageResult<Media & Person>>(
 
             return data;
         },
-        watch: [apiPath],
         dedupe: 'defer'
     }
 );
-
-watch(pending, async (newVal) => {
-    if (!newVal && !snapX.value) {
-        await new Promise(resolve => setTimeout(resolve, 1000))
-        snapX.value = true;
-    }
-})
-
-watch(interval, async (newVal, oldVal) => {
-    if (newVal != oldVal) {
-        snapX.value = false
-        apiPath.value = prop.queryItem.path + newVal
-    }
-})
 </script>
 
 <template>
-    <Section v-if="data && data.results.length > 0" :title="queryItem.title">
+    <Section v-if="data && data.results.length > 0" :id="sectionId" :title="queryItem.title">
         <template #action>
-            <select v-if="prop.queryItem.interval" v-model="interval" :aria-label="prop.queryItem.title + ' ' + prop.queryItem.interval" class="bg-white dark:bg-dark" :disabled="pending">
-                <option value="day">
+            <select v-if="prop.queryItem.interval" :onchange="eventDispatch" :aria-label="prop.queryItem.title + ' ' + prop.queryItem.interval" class="bg-white dark:bg-dark" :disabled="pending">
+                <option value="day" :selected="prop.queryItem.interval == 'day'">
                     Today
                 </option>
-                <option value="week">
+                <option value="week" :selected="prop.queryItem.interval == 'week'">
                     This Week
                 </option>
             </select>
-            <icon v-if="pending" class="text-secondary dark:text-primary" name="svg-spinners:180-ring-with-bg" />
         </template>
 
         <template #cards>
-            <cards :snap-x="snapX">
+            <cards :key="queryItem.path + queryItem.interval">
                 <section-card v-for="r in data?.results" :key="r.id" :info="r" :path="queryItem.path" />
             </cards>
         </template>
     </Section>
 </template>
-<!-- THIS WAS MOVED TO A TSX ARROW FUNCTION 
-    <card v-for=" p in data?.results " v-if="prop.queryItem.path.includes('person')" :key="p.id" :name="p.name" :image-path="p.profile_path" :type="'person'" class="hover:scale-[1.02] hover:cursor-pointer duration-200 mb-5 snap-start" />
-    <card v-for=" mi in data?.results " v-else :key="mi.id" :name="mi.title ? mi.title : mi.name" :image-path="mi.poster_path" :date="mi.release_date ? mi.release_date : mi.first_air_date" :type="'media'" class="hover:scale-[1.02] hover:cursor-pointer duration-200 mb-5 snap-start" /> 
--->

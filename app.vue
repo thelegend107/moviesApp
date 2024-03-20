@@ -14,7 +14,7 @@ const mode = useColorMode();
         </template>
 
         <template #main>
-            <NuxtPage class="h-full w-full" />
+            <NuxtPage class="h-full w-full" @card-click="(e: CustomEvent) => { handleCardClickEvent(e.detail) }" />
         </template>
 
         <template #footer>
