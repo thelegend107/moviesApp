@@ -89,6 +89,9 @@ if (error.value) {
     })
 }
 
+if (data.value)
+    useMeta(data.value.name || data.value.title, data.value.biography || data.value.overview, tmdbImage(data.value.poster_path || data.value.profile_path, TmdbPosterSizes.og))
+
 onMounted(async () => {
     setTimeout(() => {
         ytKey.value = Math.random() * 6000

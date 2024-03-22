@@ -65,6 +65,9 @@ if (error.value) throw error
 const handleSeasonSelectEvent = (eventTargetValue: string) => {
     router.push(router.currentRoute.value.path.slice(0, -1) + eventTargetValue)
 }
+
+if (showData.value && seasonData.value)
+    useMeta(showData.value.name + ' - ' + seasonData.value.name, seasonData.value.overview || showData.value.overview, tmdbImage(seasonData.value.poster_path, TmdbPosterSizes.og))
 </script>
 
 <template>
