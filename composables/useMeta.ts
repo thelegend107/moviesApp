@@ -1,4 +1,4 @@
-export default function (title: string, description: string, image: string = 'https://i.ibb.co/02Y408R/og-Image.jpg', metaHead: boolean = false) {
+export default function (title: string, description: string, image: string = '/og-Image.jpg', metaHead: boolean = false) {
     useSeoMeta({
         title: title,
         description: description,
