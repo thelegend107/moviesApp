@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const title: string = "Moe Ayoub - MoviesApp";
-const description: string = "This is a collection of movies and trailers. Built by Moe Ayoub with Nuxt";
+const description: string = "This is a collection of movies and trailers. Built by Moe Ayoub with Nuxt, TypeScript & Tailwind";
 
 useMeta(title, description, undefined, true);
 const mode = useColorMode();
