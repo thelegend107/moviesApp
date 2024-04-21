@@ -9,7 +9,7 @@ const imageIndex = ref<number>(0)
 
 <template>
     <ImagesModal v-if="modalShow" :images="images" :show="modalShow" :image-index="imageIndex" @close-modal="modalShow = false" />
-    <Section title="Photos">
+    <Section v-if="images.length > 0" title="Photos">
         <template #cards>
             <Cards>
                 <div v-for="(img, index) in images" :key="img.file_path">
